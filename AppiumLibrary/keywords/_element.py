@@ -328,6 +328,16 @@ class _ElementKeywords(KeywordGroup):
                 message = "The text of element '%s' should have been '%s' but "\
                           "in fact it was '%s'." % (locator, expected, actual)
             raise AssertionError(message)
+    
+    def get_element(self, locator):
+        """Returns the first Element object matching ``locator``.
+
+        Example:
+        | ${element}     | Get Element | id=my_element |
+        | Click Element  | ${element}     |               |
+
+        """
+        return self._element_find(locator, True, True)
 
     def get_webelement(self, locator):
         """Returns the first [http://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.remote.webelement|WebElement] object matching ``locator``.
